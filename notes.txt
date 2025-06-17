@@ -1,0 +1,73 @@
+What is a neural network? 
+
+Brains can effortlessly identify 3 regardless of the resolution. 
+values of specific pixels different in video 
+	brain resolved to see the overall idea. 
+
+Put together neural network that classify digits: 
+
+Plain vanilla: 
+	multilayer perceptron. 
+		- can classify digits. 
+	
+
+neuron = thing that holds a number. 
+network starts with a bunch of neurons = 784, 28 x 28 of the grid. 
+
+image in neural is referred to activation
+	high activation means that the pixel is lit up. 
+
+activation in the final layer. 
+	represents the 10 digits in the example. 
+	value represents the possibility that the given digit is that digit. 
+
+layers in between = hidden layers. 
+	2 hidden layers chosen which is an arbitrary choice and picked 16 for each. 
+
+activation in one layer determine activation of other layer, dependency on one layer to the one prior.
+
+Example loopy pattern sets off the neurons with the possibility of 0 8 9 6. 
+
+Hope that each layer detects aspects of a digit.
+
+What parameters are needed in order to capture the required pattern. 
+	assign a weight in the current layer to the next layer. 
+	take the activations and compute the weighted sum. 
+	weighted sum might be any number but we want it to be a value between 0 and 1
+		therefore we use a sigmoid function. 
+	
+	there also has to be threshold for when your neuron is active therefore we add a variable bias.
+	the weighted sum is for each 16 neurons in the example. 
+		784 * 16 just for the first layer which means the weights and biases. 
+		13,002 in total. 
+
+	We need to find the ideal setting for accurate classifcation. 
+
+Instead of thinking of as a black box: 
+	change each of the connections between the neurons changing the weights essentially. 
+
+
+Function of weighted sum: 
+	matrix multiplication: 
+		organize the activations in one layer into a column vector. 
+		Organize the weights as a matrix, each row corresponds to connections of one layer to a particular neuron of the next layer. 
+	
+	place the bias in a column vector and add it to the expression. 
+	then cast in sigmoid or any activation function. 
+
+python expression
+
+def feedforward(self, a): 
+	for b, w in zip(self.bias, self.weights): 
+		a = sigmoid(np.dot(w, a) + b)
+	return a 
+
+think of a neuron as a function that takes in the value of the previous layer and gives an output. 
+
+The neural network as a whole is a function, quite a dense one at least. 
+
+relu is used more commonly
+	taking a max of 0 or 1. 
+	analogy if neurons would be activated or not. 
+	sigmoid was difficult to train
+		relu was more effective. 
