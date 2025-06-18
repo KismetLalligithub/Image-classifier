@@ -1,0 +1,41 @@
+NN dont require us to build advanced features the NN's build it for us. 
+	- the NN is asked to learn the features not given the features which is a more traditional stand. 
+
+Start with a random neural network and give it things to learn. 
+
+We don't have to handcode the features they can be learned by the neural netowrk. 
+
+Image recognizer can also be used to classify sounds. 
+i
+Literally just feed in data to the Neural Netowrk -> is this even rewarding? 
+
+Myths: 
+	Lots of math
+	Lots of data
+	Lots of expensive computers
+
+Pytorch
+	- more popular than tensorflow
+
+Bird or not bird model: 
+
+DataBlock
+	how to get the data into the model. 
+	things that change
+		the first thing is the type of input that you have which is block: image -> type, what is the output -> CategoryBlock one of a number of possibilities. 
+		get_items represents the items of the model = get_image_files is a function that returns a list of all image files in the past. 
+		splitter = set a validation set RandomSplitter(valid_pct=0.2, seed=42), 
+		get_y=parent_label how do we know the correct label of the photo, the parent_label is a function that returns the parent folder of a path, the two folders in ex were 'forest' 'bird'
+		item_tfms=[Resize(192, method='squish')] inputs need to be of the same size, two ways to either cropou a piece in the middle or squish it. 
+		).dataloaders(path) things that pytorch iterates through to grab a bunch of your data, done through a GPU which can do 1000s of things at the same time, dataloader
+		feeds training algorithm with a batch of your data at a time.
+	dls.show_batch(max_n=6) shows you a batch of max_n data that will be passed with the label, which came from get_y function. 
+
+Tweaking neural network architectures: 
+	never comes up. 
+	much like compilers and machine language that is never used. 
+
+Time Stamp: 
+	49:40
+
+
